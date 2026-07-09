@@ -17,8 +17,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(getUserFromToken);
 
-app.get("/", (req, res) => res.send("Hello, World!"));
-
 app.use("/users", usersRouter);
 
 app.use(handlePostgresErrors);
