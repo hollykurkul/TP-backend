@@ -16,12 +16,12 @@ export async function getLocationById(id) {
 return location;
 }
 
-export async function createLocation(location) {
+export async function createLocation(name, description) {
     const sql = `
-        INSERT INTO locations (name)
-        VALUES ($1)
+        INSERT INTO locations (name, description)
+        VALUES ($1, $2)
         RETURNING *;
         `;
-        const {rows: [locations]} = await db.query (sql, [location.name]);
+        const {rows: [locations]} = await db.query (sql, [name, description]);
     return locations;
 }

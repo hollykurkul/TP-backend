@@ -16,12 +16,12 @@ export async function getCharacterById(id) {
     return character;
 }
 
-export async function createCharacter(character) {
+export async function createCharacter(name, animal_type, description) {
     const sql = `
         INSERT INTO characters (name, animal_type, description)
         VALUES ($1, $2, $3)
         RETURNING *;
         `;
-        const {rows:[characters]} = await db.query(sql, [character.name, character.animal_type, character.description]);
+        const {rows:[characters]} = await db.query(sql, [name, animal_type, description]);
     return characters;
 }
