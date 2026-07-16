@@ -15,3 +15,13 @@ export async function getLocationById(id) {
     const {rows: [location]} = await db.query(sql, [id]);
 return location;
 }
+
+export async function createLocation(location) {
+    const sql = `
+        INSERT INTO locations (name)
+        VALUES ($1)
+        RETURNING *;
+        `;
+        const {rows: [locations]} = await db.query (sql, [location.name]);
+    return locations;
+}
