@@ -13,7 +13,7 @@ router
     const user = await createUser(username, password);
 
     const token = await createToken({ id: user.id });
-    res.status(201).send(token);
+    res.status(201).send({ token });
   });
 
 router
@@ -24,5 +24,5 @@ router
     if (!user) return res.status(401).send("Invalid username or password.");
 
     const token = await createToken({ id: user.id });
-    res.send(token);
+    res.send({ token });
   });
