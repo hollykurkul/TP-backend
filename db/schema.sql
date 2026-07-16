@@ -35,6 +35,7 @@ CREATE TABLE enemies (
 CREATE TABLE bosses (
   id serial PRIMARY KEY,
   name text NOT NULL,
+  description text NOT NULL,
   hp integer NOT NULL, 
   location_id integer NOT NULL REFERENCES locations(id) ON DELETE CASCADE  
 );
