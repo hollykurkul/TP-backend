@@ -1,5 +1,7 @@
-DROP TABLE IF EXISTS character_items;
-DROP TABLE IF EXISTS character_weapons;
+DROP TABLE IF EXISTS story_choices;
+DROP TABLE IF EXISTS story_nodes;
+DROP TABLE IF EXISTS user_items;
+DROP TABLE IF EXISTS user_weapons;
 DROP TABLE IF EXISTS healing_items;
 DROP TABLE IF EXISTS weapons;
 DROP TABLE IF EXISTS bosses;
@@ -43,6 +45,7 @@ CREATE TABLE bosses (
 CREATE TABLE weapons (
   id serial PRIMARY KEY,
   name text NOT NULL,
+  description text NOT NULL,
   damage integer NOT NULL, 
   location_id integer NOT NULL REFERENCES locations(id) ON DELETE CASCADE
 );
@@ -50,20 +53,38 @@ CREATE TABLE weapons (
 CREATE TABLE healing_items (
   id serial PRIMARY KEY,
   name text NOT NULL,
+  description text NOT NULL,
   healing_amount integer NOT NULL,
   location_id integer NOT NULL REFERENCES locations(id) ON DELETE CASCADE
 );
 
-CREATE TABLE character_weapons (
-  character_id integer NOT NULL REFERENCES characters(id) ON DELETE CASCADE,
+CREATE TABLE user_weapons (
+  user_id integer NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   weapon_id integer NOT NULL REFERENCES weapons(id) ON DELETE CASCADE,
-  PRIMARY KEY (character_id, weapon_id)
+  PRIMARY KEY (user_id, weapon_id)
 );
 
-CREATE TABLE character_items (
-  character_id integer NOT NULL REFERENCES characters(id) ON DELETE CASCADE,
+CREATE TABLE user_items (
+  user_id integer NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   item_id integer NOT NULL REFERENCES healing_items(id) ON DELETE CASCADE,
   quantity integer NOT NULL,
-  PRIMARY KEY (character_id, item_id)
+  PRIMARY KEY (user_id, item_id)
 );
 
+CREATE TABLE story_nodes (
+  id text PRIMARY KEY,
+  chapter_title text NOT NULL,
+  scene_title text NOT NULL,
+  body_lines text NOT NULL,
+  speaker text,
+  dialogue text
+);
+
+CREATE TABLE story_choices (
+  id serial PRIMARY KEY,
+  story_node_id text NOT NULL REFERENCES story_nodes(id) ON DELETE CASCADE,
+  label text NOT NULL,
+  choice_text text NOT NULL,
+  next_node_id text REFERENCES story_nodes(id),
+  sort_order integer NOT NULL DEFAULT 0
+);
