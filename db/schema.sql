@@ -19,12 +19,14 @@ CREATE TABLE users (
 CREATE TABLE characters (
   id serial PRIMARY KEY,
   name text NOT NULL,
-  animal_type text NOT NULL
+  animal_type text NOT NULL,
+  description text NOT NULL
 );
 
 CREATE TABLE locations (
   id serial PRIMARY KEY,
-  name text NOT NULL
+  name text NOT NULL,
+  description text NOT NULL
 );
 
 CREATE TABLE enemies (
