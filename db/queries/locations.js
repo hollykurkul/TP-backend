@@ -1,5 +1,15 @@
 import db from "#db/client";
 
+export async function createLocation(name, description) {
+    const sql = `
+        INSERT INTO locations (name, description)
+        VALUES ($1, $2)
+        RETURNING *;
+        `;
+        const {rows: [locations]} = await db.query (sql, [name, description]);
+    return locations;
+}
+
 export async function getAllLocations() {
     const sql = `
         SELECT * FROM locations;
@@ -14,14 +24,4 @@ export async function getLocationById(id) {
         `;
     const {rows: [location]} = await db.query(sql, [id]);
 return location;
-}
-
-export async function createLocation(name, description) {
-    const sql = `
-        INSERT INTO locations (name, description)
-        VALUES ($1, $2)
-        RETURNING *;
-        `;
-        const {rows: [locations]} = await db.query (sql, [name, description]);
-    return locations;
 }
