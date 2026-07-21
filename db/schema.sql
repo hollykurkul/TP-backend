@@ -20,7 +20,8 @@ CREATE TABLE characters (
   id serial PRIMARY KEY,
   name text NOT NULL,
   animal_type text NOT NULL,
-  description text NOT NULL
+  description text NOT NULL,
+  image_url text NOT NULL
 );
 
 CREATE TABLE locations (
