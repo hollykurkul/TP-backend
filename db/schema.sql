@@ -1,7 +1,6 @@
 DROP TABLE IF EXISTS story_choices;
 DROP TABLE IF EXISTS story_nodes;
-DROP TABLE IF EXISTS user_items;
-DROP TABLE IF EXISTS user_weapons;
+DROP TABLE IF EXISTS user_inventory;
 DROP TABLE IF EXISTS healing_items;
 DROP TABLE IF EXISTS weapons;
 DROP TABLE IF EXISTS bosses;
@@ -27,7 +26,6 @@ CREATE TABLE characters (
 CREATE TABLE locations (
   id serial PRIMARY KEY,
   name text NOT NULL,
-  description text NOT NULL
 );
 
 CREATE TABLE enemies (
@@ -39,16 +37,14 @@ CREATE TABLE enemies (
 
 CREATE TABLE bosses (
   id serial PRIMARY KEY,
-  name text NOT NULL,
-  description text NOT NULL,
-  hp integer NOT NULL, 
+  name text NOT NULL, 
+  hp integer NOT NULL,
   location_id integer NOT NULL REFERENCES locations(id) ON DELETE CASCADE  
 );
 
 CREATE TABLE weapons (
   id serial PRIMARY KEY,
   name text NOT NULL,
-  description text NOT NULL,
   damage integer NOT NULL, 
   location_id integer NOT NULL REFERENCES locations(id) ON DELETE CASCADE
 );
@@ -56,22 +52,20 @@ CREATE TABLE weapons (
 CREATE TABLE healing_items (
   id serial PRIMARY KEY,
   name text NOT NULL,
-  description text NOT NULL,
   healing_amount integer NOT NULL,
   location_id integer NOT NULL REFERENCES locations(id) ON DELETE CASCADE
 );
 
-CREATE TABLE user_weapons (
+CREATE TABLE user_inventory (
+  id serial PRIMARY KEY,
   user_id integer NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-  weapon_id integer NOT NULL REFERENCES weapons(id) ON DELETE CASCADE,
-  PRIMARY KEY (user_id, weapon_id)
-);
+  weapon_id integer REFERENCES weapons(id) ON DELETE CASCADE,
+  healing_item_id integer REFERENCES healing_items(id) ON DELETE CASCADE,
 
-CREATE TABLE user_items (
-  user_id integer NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-  item_id integer NOT NULL REFERENCES healing_items(id) ON DELETE CASCADE,
-  quantity integer NOT NULL,
-  PRIMARY KEY (user_id, item_id)
+  -- exactly one of the two item references must be set
+  CONSTRAINT one_item_type CHECK (
+    (weapon_id IS NOT NULL)::int + (healing_item_id IS NOT NULL)::int = 1
+  )
 );
 
 CREATE TABLE story_nodes (
