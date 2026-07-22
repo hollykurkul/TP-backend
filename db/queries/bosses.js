@@ -6,17 +6,17 @@ export const bosses = [
   { name: "Animal Control", hp: 5, locationId: 3 },
 ];
 
-export async function createBoss(name, description, hp, locationId) {
+export async function createBoss(name, hp, locationId) {
   const sql = `
 INSERT INTO bosses
-    (name, description, hp, location_id)
+    (name, hp, location_id)
 VALUES
-    ($1, $2, $3, $4)
+    ($1, $2, $3)
 RETURNING *
 `;
   const {
     rows: [boss],
-  } = await db.query(sql, [name, description, hp, locationId]);
+  } = await db.query(sql, [name, hp, locationId]);
   return boss;
 }
 
