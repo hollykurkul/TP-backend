@@ -1,5 +1,11 @@
 import db from "#db/client";
 
+export const bosses = [
+  { name: "Rabid Squirrel", hp: 5, locationId: 1 },
+  { name: "Rival Stray", hp: 5, locationId: 2 },
+  { name: "Animal Control", hp: 5, locationId: 3 },
+];
+
 export async function createBoss(name, description, hp, locationId) {
   const sql = `
 INSERT INTO bosses

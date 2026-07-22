@@ -26,6 +26,9 @@ CREATE TABLE characters (
 CREATE TABLE locations (
   id serial PRIMARY KEY,
   name text NOT NULL,
+  hub text NOT NULL,
+  rest text NOT NULL,
+  combat text NOT NULL
 );
 
 CREATE TABLE enemies (
@@ -45,7 +48,9 @@ CREATE TABLE bosses (
 CREATE TABLE weapons (
   id serial PRIMARY KEY,
   name text NOT NULL,
-  damage integer NOT NULL, 
+  damage integer NOT NULL,
+  description text NOT NULL,
+  image_url text NOT NULL,
   location_id integer NOT NULL REFERENCES locations(id) ON DELETE CASCADE
 );
 
@@ -53,6 +58,8 @@ CREATE TABLE healing_items (
   id serial PRIMARY KEY,
   name text NOT NULL,
   healing_amount integer NOT NULL,
+  description text NOT NULL,
+  image_url text NOT NULL,
   location_id integer NOT NULL REFERENCES locations(id) ON DELETE CASCADE
 );
 

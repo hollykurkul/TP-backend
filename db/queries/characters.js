@@ -1,6 +1,6 @@
 import db from "#db/client";
 
-const characters = [
+export const characters = [
   {
     name: "Stan",
     animalType: "Chameleon",

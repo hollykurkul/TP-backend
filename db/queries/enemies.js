@@ -1,5 +1,17 @@
 import db from "#db/client";
 
+export const enemies = [
+  { name: "Rabbit", hp: 3, locationId: 1 },
+  { name: "Squirrel", hp: 3, locationId: 1 },
+  { name: "Fox", hp: 3, locationId: 1 },
+  { name: "Armadillo", hp: 3, locationId: 2 },
+  { name: "Snake", hp: 3, locationId: 2 },
+  { name: "Hawk", hp: 3, locationId: 2 },
+  { name: "Stray Animal", hp: 3, locationId: 3 },
+  { name: "Rat", hp: 3, locationId: 3 },
+  { name: "Aggressive Kid", hp: 3, locationId: 3 },
+];
+
 export async function createEnemy(name, hp, locationId) {
   const sql = `
     INSERT INTO enemies
