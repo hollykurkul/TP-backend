@@ -11,6 +11,7 @@ import { createBoss, bosses } from "#db/queries/bosses";
 import { createWeapon, weapons } from "#db/queries/weapons";
 import { createHealingItem, healingItems } from "#db/queries/healing_items";
 import { createLocation, locations } from "#db/queries/locations";
+import { createItem, itemCatalog } from "#db/queries/items";
 async function seed() {
   for (const character of characters) {
     await createCharacter(
@@ -34,21 +35,16 @@ async function seed() {
   for (const boss of bosses) {
     await createBoss(boss.name, boss.hp, boss.locationId);
   }
-  for (const weapon of weapons) {
-    await createWeapon(
-      weapon.name,
-      weapon.damage,
-      weapon.description,
-      weapon.imageUrl,
-      weapon.locationId,
-    );
-  }
-  for (const item of healingItems) {
-    await createHealingItem(
+
+  for (const item of itemCatalog) {
+    await createItem(
       item.name,
-      item.healingAmount,
+      item.type,
+      item.effect,
       item.description,
       item.imageUrl,
+      item.canEquip,
+      item.canUse,
       item.locationId,
     );
   }
