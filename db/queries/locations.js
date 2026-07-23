@@ -3,7 +3,7 @@ import db from "#db/client";
 export const locations = [
   { name: "Forest", hub: "Pond", rest: "Den", combat: "Clearing" },
   { name: "Road", hub: "Bus Stop", rest: "Rest Stop", combat: "Ditch" },
-  { name: "City", hub: "City Park", rest: "Bus Stop", combat: "Alleyway" },
+  { name: "City", hub: "City Park", rest: "Dumpster", combat: "Alleyway" },
 ];
 
 export async function createLocation(name, hub, rest, combat) {
