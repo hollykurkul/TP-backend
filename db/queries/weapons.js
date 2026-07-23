@@ -21,7 +21,8 @@ export const weapons = [
     name: "The Twig Blade",
     damage: 1,
     description: "",
-    imageUrl: "",
+    imageUrl:
+      "https://cdn.wikimg.net/en/zeldawiki/images/thumb/2/21/TPHD_Wooden_Sword_Model.png/1200px-TPHD_Wooden_Sword_Model.png",
     locationId: 1,
   },
   {
