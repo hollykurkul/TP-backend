@@ -1,8 +1,7 @@
 DROP TABLE IF EXISTS story_choices;
 DROP TABLE IF EXISTS story_nodes;
 DROP TABLE IF EXISTS user_inventory;
-DROP TABLE IF EXISTS healing_items;
-DROP TABLE IF EXISTS weapons;
+DROP TABLE IF EXISTS item_catalog;
 DROP TABLE IF EXISTS bosses;
 DROP TABLE IF EXISTS enemies;
 DROP TABLE IF EXISTS locations;
@@ -35,6 +34,7 @@ CREATE TABLE enemies (
   id serial PRIMARY KEY,
   name text NOT NULL,
   hp integer NOT NULL,
+  image_url text NOT NULL,
   location_id integer NOT NULL REFERENCES locations(id) ON DELETE CASCADE
 );
 
@@ -42,37 +42,26 @@ CREATE TABLE bosses (
   id serial PRIMARY KEY,
   name text NOT NULL, 
   hp integer NOT NULL,
+  image_url text NOT NULL,
   location_id integer NOT NULL REFERENCES locations(id) ON DELETE CASCADE  
 );
 
-CREATE TABLE weapons (
+CREATE TABLE item_catalog(
   id serial PRIMARY KEY,
-  name text NOT NULL,
-  damage integer NOT NULL,
+  name text NOT NULL, 
+  type text NOT NULL, 
+  effect text NOT NULL,
   description text NOT NULL,
   image_url text NOT NULL,
-  location_id integer NOT NULL REFERENCES locations(id) ON DELETE CASCADE
-);
-
-CREATE TABLE healing_items (
-  id serial PRIMARY KEY,
-  name text NOT NULL,
-  healing_amount integer NOT NULL,
-  description text NOT NULL,
-  image_url text NOT NULL,
-  location_id integer NOT NULL REFERENCES locations(id) ON DELETE CASCADE
+  can_equip BOOLEAN,
+  can_use BOOLEAN,
+  location_id integer NOT NULL REFERENCES locations(id) ON DELETE CASCADE  
 );
 
 CREATE TABLE user_inventory (
-  id serial PRIMARY KEY,
   user_id integer NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-  weapon_id integer REFERENCES weapons(id) ON DELETE CASCADE,
-  healing_item_id integer REFERENCES healing_items(id) ON DELETE CASCADE,
-
-  -- exactly one of the two item references must be set
-  CONSTRAINT one_item_type CHECK (
-    (weapon_id IS NOT NULL)::int + (healing_item_id IS NOT NULL)::int = 1
-  )
+  item_id integer NOT NULL REFERENCES item_catalog(id) ON DELETE CASCADE,
+  PRIMARY KEY (user_id, item_id)
 );
 
 CREATE TABLE story_nodes (

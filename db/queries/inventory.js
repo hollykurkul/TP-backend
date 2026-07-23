@@ -1,19 +1,5 @@
 import db from "#db/client";
 
-export async function addWeaponToInventory(userId, weaponId) {
-  const sql = `
-      INSERT INTO user_inventory 
-        (user_id, weapon_id)
-      VALUES 
-        ($1, $2)
-      RETURNING *;
-    `;
-  const {
-    rows: [inventoryWeapon],
-  } = await db.query(sql, [userId, weaponId]);
-  return inventoryWeapon;
-}
-
 export async function addItemToInventory(userId, itemId) {
   const sql = `
       INSERT INTO user_inventory 
