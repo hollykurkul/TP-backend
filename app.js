@@ -3,6 +3,8 @@ const app = express();
 export default app;
 
 import usersRouter from "#api/users";
+import enemiesRouter from "#api/enemies";
+import bossesRouter from "#api/bosses";
 import getUserFromToken from "#middleware/getUserFromToken";
 import handlePostgresErrors from "#middleware/handlePostgresErrors";
 import cors from "cors";
@@ -20,6 +22,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(getUserFromToken);
 
 app.use("/users", usersRouter);
+app.use("/enemies", enemiesRouter);
+app.use("/bosses", bossesRouter);
 
 app.use(handlePostgresErrors);
 app.use((err, req, res, next) => {
