@@ -66,6 +66,18 @@ export const enemies = [
   },
 ];
 
+function withEnemyImage(enemy) {
+  const seededEnemy = enemies.find(
+    ({ name, locationId }) =>
+      name === enemy.name && locationId === enemy.location_id,
+  );
+
+  return {
+    ...enemy,
+    image_url: enemy.image_url ?? seededEnemy?.imageUrl,
+  };
+}
+
 export async function createEnemy(name, hp, imageUrl, locationId) {
   const sql = `
     INSERT INTO enemies
@@ -107,6 +119,6 @@ export async function getEnemiesByLocationId(id) {
     FROM enemies
     WHERE location_id = $1
     `;
-  const { rows: enemies } = await db.query(sql, [id]);
-  return enemies;
+  const { rows: enemyRows } = await db.query(sql, [id]);
+  return enemyRows.map(withEnemyImage);
 }

@@ -24,6 +24,18 @@ export const bosses = [
   },
 ];
 
+function withBossImage(boss) {
+  const seededBoss = bosses.find(
+    ({ name, locationId }) =>
+      name === boss.name && locationId === boss.location_id,
+  );
+
+  return {
+    ...boss,
+    image_url: boss.image_url ?? seededBoss?.imageUrl,
+  };
+}
+
 export async function createBoss(name, hp, imageUrl, locationId) {
   const sql = `
 INSERT INTO bosses
@@ -67,6 +79,6 @@ export async function getBossByLocationId(id) {
     FROM bosses
     WHERE location_id = $1
     `;
-  const { rows: boss } = await db.query(sql, [id]);
-  return boss;
+  const { rows: bossRows } = await db.query(sql, [id]);
+  return bossRows.map(withBossImage);
 }
