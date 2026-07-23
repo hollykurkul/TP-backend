@@ -25,6 +25,16 @@ export async function createEnemy(name, hp, locationId) {
   return enemy;
 }
 
+export async function getAllEnemies() {
+  const sql = `
+    SELECT *
+    FROM enemies
+    `;
+  const {
+    rows: [enemies],
+  } = await db.query(sql);
+  return enemies;
+}
 export async function getEnemyById(id) {
   const sql = `
     SELECT *
