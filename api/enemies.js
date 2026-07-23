@@ -2,35 +2,20 @@ import express from "express";
 const router = express.Router();
 export default router;
 
-import {
-  getAllEnemies,
-  getEnemyById,
-  getEnemiesByLocationId,
-} from "#db/queries/enemies";
+import { getEnemiesByLocationId } from "#db/queries/enemies";
 
-router.get("/", async (req, res) => {
-  const enemies = await getAllEnemies();
+router.get("/location/:locationId", async (req, res) => {
+  const locationId = Number(req.params.locationId);
+
+  if (!Number.isInteger(locationId) || locationId < 1) {
+    return res.status(400).send("Location ID must be a positive integer.");
+  }
+
+  const enemies = await getEnemiesByLocationId(locationId);
+
+  if (enemies.length === 0) {
+    return res.status(404).send("No enemies found for this location.");
+  }
+
   res.send(enemies);
-});
-
-router.param("locationId", async (req, res, next, locationId) => {
-  const enemies = await getEnemiesByLocationId(+locationId);
-  if (!enemies) return res.status(404).send("Enemies not found");
-  req.enemies = enemies;
-  next();
-});
-
-router.get("/:locationId", (req, res) => {
-  res.send(req.enemies);
-});
-
-router.param("id", async (req, res, next, id) => {
-  const enemy = await getEnemyById(+id);
-  if (!enemy) return res.status(404).send("Enemy not found");
-  req.enemy = enemy;
-  next();
-});
-
-router.get("/:id", (req, res) => {
-  res.send(req.enemy);
 });

@@ -2,25 +2,20 @@ import express from "express";
 const router = express.Router();
 export default router;
 
-import {
-  getAllBosses,
-  getBossById,
-  getBossByLocationId,
-} from "#db/queries/bosses";
+import { getBossByLocationId } from "#db/queries/bosses";
 
-router.get("/", async (req, res) => {
-  const bosses = await getAllBosses();
-  res.send(bosses);
-});
+router.get("/location/:locationId", async (req, res) => {
+  const locationId = Number(req.params.locationId);
 
-router.param("id", async (req, res, next, id) => {
-  const boss = await getBossById(+id);
-  if (!boss) return res.status(404).send("Boss not found");
+  if (!Number.isInteger(locationId) || locationId < 1) {
+    return res.status(400).send("Location ID must be a positive integer.");
+  }
 
-  req.boss = boss;
-  next();
-});
+  const [boss] = await getBossByLocationId(locationId);
 
-router.get("/:id", (req, res) => {
-  res.send(req.boss);
+  if (!boss) {
+    return res.status(404).send("No boss found for this location.");
+  }
+
+  res.send(boss);
 });
