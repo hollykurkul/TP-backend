@@ -34,6 +34,7 @@ CREATE TABLE enemies (
   id serial PRIMARY KEY,
   name text NOT NULL,
   hp integer NOT NULL,
+  image_url text NOT NULL,
   location_id integer NOT NULL REFERENCES locations(id) ON DELETE CASCADE
 );
 
@@ -41,6 +42,7 @@ CREATE TABLE bosses (
   id serial PRIMARY KEY,
   name text NOT NULL, 
   hp integer NOT NULL,
+  image_url text NOT NULL,
   location_id integer NOT NULL REFERENCES locations(id) ON DELETE CASCADE  
 );
 
