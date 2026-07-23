@@ -20,6 +20,17 @@ RETURNING *
   return boss;
 }
 
+export async function getAllBosse() {
+  const sql = `
+    SELECT *
+    FROM bosses
+    `;
+  const {
+    rows: [bosses],
+  } = await db.query(sql);
+  return bosses;
+}
+
 export async function getBossById(id) {
   const sql = `
     SELECT *
