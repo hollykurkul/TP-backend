@@ -1,5 +1,27 @@
 import db from "#db/client";
 
+function getRenderableImageUrl(imageUrl) {
+  const driveFileMatch =
+    /drive\.google\.com\/file\/d\/([^/]+)/.exec(imageUrl ?? "");
+
+  if (!driveFileMatch) return imageUrl;
+
+  return `https://drive.google.com/uc?export=view&id=${driveFileMatch[1]}`;
+}
+
+function formatCharacter(character) {
+  const catalogCharacter = characters.find(
+    (entry) => entry.name.toLowerCase() === character.name.toLowerCase(),
+  );
+
+  return {
+    ...character,
+    image_url: getRenderableImageUrl(
+      catalogCharacter?.imageUrl ?? character.image_url,
+    ),
+  };
+}
+
 export const characters = [
   {
     name: "Stan",
@@ -70,10 +92,16 @@ export async function createCharacter(
 
 export async function getAllCharacters() {
   const sql = `
-        SELECT * FROM characters;
+        SELECT *
+        FROM (
+          SELECT DISTINCT ON (LOWER(name)) *
+          FROM characters
+          ORDER BY LOWER(name), id
+        ) unique_characters
+        ORDER BY id;
         `;
   const { rows: characters } = await db.query(sql);
-  return characters;
+  return characters.map(formatCharacter);
 }
 
 export async function getCharacterById(id) {
@@ -83,5 +111,5 @@ export async function getCharacterById(id) {
   const {
     rows: [character],
   } = await db.query(sql, [id]);
-  return character;
+  return character ? formatCharacter(character) : undefined;
 }

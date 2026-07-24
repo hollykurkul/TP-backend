@@ -3,6 +3,7 @@ const app = express();
 export default app;
 
 import usersRouter from "#api/users";
+import charactersRouter from "#api/characters";
 import enemiesRouter from "#api/enemies";
 import bossesRouter from "#api/bosses";
 import inventoryRouter from "#api/inventory";
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(getUserFromToken);
 
 app.use("/users", usersRouter);
+app.use("/characters", charactersRouter);
 app.use("/enemies", enemiesRouter);
 app.use("/bosses", bossesRouter);
 app.use("/inventory", inventoryRouter);

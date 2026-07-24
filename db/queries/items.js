@@ -40,7 +40,7 @@ export const itemCatalog = [
     effect: "Restores 1 heart",
     description: "A handful of juicy berries. Naturally sweet and filling.",
     imageUrl:
-      "https://cdn.discordapp.com/attachments/1523867510359720010/1529636988062531745/berries.png?ex=6a62a8f5&is=6a615775&hm=faa74ee02e98ef342c406bb9a5168d3651936b0d4cef6ce9b686ed1044a7b40b",
+      "https://game-icons.net/icons/ffffff/000000/1x1/delapouite/berry-bush.png",
     canEquip: false,
     canUse: true,
     locationId: 1,
@@ -51,7 +51,7 @@ export const itemCatalog = [
     effect: "Restores 2 hearts",
     description: "A fresh fish, still wriggling. It smells of the stream.",
     imageUrl:
-      "https://cdn.discordapp.com/attachments/1523867510359720010/1529637022145314957/fish.png?ex=6a62a8fd&is=6a61577d&hm=449fb1975ce6cb0083306d68c15e494871644b1ec4f968cd2a3a8701196e6ab7",
+      "https://game-icons.net/icons/ffffff/000000/1x1/delapouite/fish-bucket.png",
     canEquip: false,
     canUse: true,
     locationId: 1,
@@ -106,7 +106,7 @@ export const itemCatalog = [
     description:
       "A spiky fruit that yields a sweet, refreshing juice. its the quenchiest",
     imageUrl:
-      "https://cdn.discordapp.com/attachments/1523867510359720010/1529637115657453568/cactusfruit.png?ex=6a62a913&is=6a615793&hm=6eebaefa070cbd75412cb1df2372612523d0e83d7c75ab208da920a1aea6d48a",
+      "https://game-icons.net/icons/ffffff/000000/1x1/delapouite/cactus.png",
     canEquip: false,
     canUse: true,
     locationId: 2,
@@ -117,7 +117,7 @@ export const itemCatalog = [
     effect: "Restores 2 heart",
     description: "An abandoned bottle filled with clean water.",
     imageUrl:
-      "https://cdn.discordapp.com/attachments/1523867510359720010/1529637152525127692/waterbottle.png?ex=6a62a91c&is=6a61579c&hm=01d8821f2214c5dd24d1513c3ae09e7b2280a17e0bc3bd4fbad07a35992932e8",
+      "https://game-icons.net/icons/ffffff/000000/1x1/delapouite/water-bottle.png",
     canEquip: false,
     canUse: true,
     locationId: 2,
@@ -174,7 +174,7 @@ export const itemCatalog = [
     description:
       "A bag of fast food. Not very nutritious, but filling and delicious.",
     imageUrl:
-      "https://cdn.discordapp.com/attachments/1523867510359720010/1529637392548495543/fastfoodbag.png?ex=6a62a955&is=6a6157d5&hm=195cc86187fd03fb599a8c06f9051e1bfcb26ce72c11fdec0ca53930c85339e0",
+      "https://game-icons.net/icons/ffffff/000000/1x1/delapouite/chips-bag.png",
     canEquip: false,
     canUse: true,
     locationId: 3,
