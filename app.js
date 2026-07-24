@@ -5,6 +5,7 @@ export default app;
 import usersRouter from "#api/users";
 import enemiesRouter from "#api/enemies";
 import bossesRouter from "#api/bosses";
+import inventoryRouter from "#api/inventory";
 import getUserFromToken from "#middleware/getUserFromToken";
 import handlePostgresErrors from "#middleware/handlePostgresErrors";
 import cors from "cors";
@@ -24,6 +25,7 @@ app.use(getUserFromToken);
 app.use("/users", usersRouter);
 app.use("/enemies", enemiesRouter);
 app.use("/bosses", bossesRouter);
+app.use("/inventory", inventoryRouter);
 
 app.use(handlePostgresErrors);
 app.use((err, req, res, next) => {

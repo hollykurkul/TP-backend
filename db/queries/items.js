@@ -7,7 +7,7 @@ export const itemCatalog = [
     effect: "1d4 damage",
     description: "a small stick, pointy at the tip. ouch!",
     imageUrl:
-      "https://cdn.discordapp.com/attachments/1523867510359720010/1529636934689755207/littlestick.png?ex=6a62a8e8&is=6a615768&hm=b9cd989bb898fcb682c61ff52e85f1fc47d7fffdf648ab10dbb838eb7a323080",
+      "https://game-icons.net/icons/ffffff/000000/1x1/delapouite/wood-stick.png",
     canEquip: true,
     canUse: false,
     locationId: 1,
@@ -18,7 +18,7 @@ export const itemCatalog = [
     effect: "1d6 Damage",
     description: "A sturdy branch, perfect for a makeshift club.",
     imageUrl:
-      "https://cdn.discordapp.com/attachments/1523867510359720010/1529636956919562451/bigbranch.png?ex=6a62a8ed&is=6a61576d&hm=8d87af63471f67c3a7bf51f6e726e4e86e3cd8ee0f47b4173bd50bf5b2a42d44",
+      "https://game-icons.net/icons/ffffff/000000/1x1/lorc/tree-branch.png",
     canEquip: true,
     canUse: false,
     locationId: 1,
@@ -29,7 +29,7 @@ export const itemCatalog = [
     effect: "1d6 damage",
     description: "A polished wooden blade, light enough for quick strikes.",
     imageUrl:
-      "https://cdn.discordapp.com/attachments/1523867510359720010/1529637058258403401/twigblade.png?ex=6a62a905&is=6a615785&hm=a35e7ce26cb0d354faa2405f793f87b6e592dbac31ebd798976afc32c3ca157b",
+      "https://game-icons.net/icons/ffffff/000000/1x1/delapouite/two-handed-sword.png",
     canEquip: true,
     canUse: false,
     locationId: 1,
@@ -73,7 +73,7 @@ export const itemCatalog = [
     effect: "1d8 damage",
     description: "A fallen stop sign, rusted and weathered.",
     imageUrl:
-      "https://cdn.discordapp.com/attachments/1523867510359720010/1529637089581207754/stopsign.png?ex=6a62a90d&is=6a61578d&hm=830b968ea015ccf9591c89355638cef8a989dca65a6f565b26a0f4a043b7e2ee",
+      "https://game-icons.net/icons/ffffff/000000/1x1/delapouite/stop-sign.png",
     canEquip: true,
     canUse: false,
     locationId: 2,
@@ -150,7 +150,7 @@ export const itemCatalog = [
     effect: "1d4 damage",
     description: "A simple stick, useful for support and striking.",
     imageUrl:
-      "https://cdn.discordapp.com/attachments/1523867510359720010/1529637183949111446/walkingstick.png?ex=6a62a923&is=6a6157a3&hm=f3d367aeef094852837c840ef83af1689c6ec8a656c24f369737fa08537164d7",
+      "https://game-icons.net/icons/ffffff/000000/1x1/lorc/wizard-staff.png",
     canEquip: true,
     canUse: false,
     locationId: 3,

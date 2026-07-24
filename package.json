@@ -10,6 +10,7 @@
     "test": "vitest",
     "db:schema": "psql -d TP -f db/schema.sql",
     "db:seed": "node --env-file=.env db/seed.js",
+    "db:migrate:inventory": "node --env-file=.env db/migrateInventory.js",
     "db:reset": "npm run db:schema && npm run db:seed"
   },
   "dependencies": {
