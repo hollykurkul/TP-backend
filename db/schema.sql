@@ -55,7 +55,8 @@ CREATE TABLE item_catalog(
   image_url text NOT NULL,
   can_equip BOOLEAN,
   can_use BOOLEAN,
-  location_id integer NOT NULL REFERENCES locations(id) ON DELETE CASCADE  
+  location_id integer NOT NULL REFERENCES locations(id) ON DELETE CASCADE,
+  UNIQUE (name, location_id)
 );
 
 CREATE TABLE user_inventory (
