@@ -2,7 +2,11 @@ import express from "express";
 const router = express.Router();
 export default router;
 
-import { getEnemiesByLocationId } from "#db/queries/enemies";
+import {
+  getEnemiesByLocationId,
+  getEnemyById,
+} from "#db/queries/enemies";
+import proxyImage from "#api/proxyImage";
 
 router.get("/location/:locationId", async (req, res) => {
   const locationId = Number(req.params.locationId);
@@ -18,4 +22,17 @@ router.get("/location/:locationId", async (req, res) => {
   }
 
   res.send(enemies);
+});
+
+router.param("id", async (req, res, next, id) => {
+  const enemy = await getEnemyById(Number(id));
+
+  if (!enemy) return res.status(404).send("Enemy not found.");
+
+  req.enemy = enemy;
+  next();
+});
+
+router.get("/:id/image", async (req, res) => {
+  return proxyImage(res, req.enemy.image_url);
 });

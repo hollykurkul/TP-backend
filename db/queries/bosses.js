@@ -32,7 +32,7 @@ function withBossImage(boss) {
 
   return {
     ...boss,
-    image_url: boss.image_url ?? seededBoss?.imageUrl,
+    image_url: seededBoss?.imageUrl ?? boss.image_url,
   };
 }
 
@@ -70,7 +70,7 @@ export async function getBossById(id) {
   const {
     rows: [boss],
   } = await db.query(sql, [id]);
-  return boss;
+  return boss ? withBossImage(boss) : undefined;
 }
 
 export async function getBossByLocationId(id) {
