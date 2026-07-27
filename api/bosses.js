@@ -2,7 +2,11 @@ import express from "express";
 const router = express.Router();
 export default router;
 
-import { getBossByLocationId } from "#db/queries/bosses";
+import {
+  getBossById,
+  getBossByLocationId,
+} from "#db/queries/bosses";
+import proxyImage from "#api/proxyImage";
 
 router.get("/location/:locationId", async (req, res) => {
   const locationId = Number(req.params.locationId);
@@ -18,4 +22,17 @@ router.get("/location/:locationId", async (req, res) => {
   }
 
   res.send(boss);
+});
+
+router.param("id", async (req, res, next, id) => {
+  const boss = await getBossById(Number(id));
+
+  if (!boss) return res.status(404).send("Boss not found.");
+
+  req.boss = boss;
+  next();
+});
+
+router.get("/:id/image", async (req, res) => {
+  return proxyImage(res, req.boss.image_url);
 });

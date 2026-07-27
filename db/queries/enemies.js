@@ -19,7 +19,7 @@ export const enemies = [
     name: "Fox",
     hp: 3,
     imageUrl:
-      "https://drive.google.com/file/d/1DoYMahDkMJl2KNBXKx1Qcb6pT3d-K7o8/view?usp=sharing",
+      "https://drive.google.com/file/d/1rbtwUCty7JnWiY9fCQ_I4lMUFMtVx1qB/view?usp=sharing",
     locationId: 1,
   },
   {
@@ -74,7 +74,7 @@ function withEnemyImage(enemy) {
 
   return {
     ...enemy,
-    image_url: enemy.image_url ?? seededEnemy?.imageUrl,
+    image_url: seededEnemy?.imageUrl ?? enemy.image_url,
   };
 }
 
@@ -110,7 +110,7 @@ export async function getEnemyById(id) {
   const {
     rows: [enemy],
   } = await db.query(sql, [id]);
-  return enemy;
+  return enemy ? withEnemyImage(enemy) : undefined;
 }
 
 export async function getEnemiesByLocationId(id) {
