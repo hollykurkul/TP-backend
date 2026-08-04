@@ -27,7 +27,8 @@ export const itemCatalog = [
     name: "Twig Blade",
     type: "Weapon",
     effect: "1d6 damage",
-    description: "A polished wooden blade, light enough for quick strikes.",
+    description:
+      "The legendary blade of the forest, crafted from the finest mohagany.",
     imageUrl:
       "https://game-icons.net/icons/ffffff/000000/1x1/delapouite/two-handed-sword.png",
     canEquip: true,
