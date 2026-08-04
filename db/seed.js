@@ -30,10 +30,22 @@ async function seed() {
     );
   }
   for (const enemy of enemies) {
-    await createEnemy(enemy.name, enemy.hp, enemy.imageUrl, enemy.locationId);
+    await createEnemy(
+      enemy.name,
+      enemy.hp,
+      enemy.damage,
+      enemy.imageUrl,
+      enemy.locationId,
+    );
   }
   for (const boss of bosses) {
-    await createBoss(boss.name, boss.hp, boss.imageUrl, boss.locationId);
+    await createBoss(
+      boss.name,
+      boss.hp,
+      boss.damage,
+      boss.imageUrl,
+      boss.locationId,
+    );
   }
 
   for (const item of itemCatalog) {

@@ -4,6 +4,7 @@ export const enemies = [
   {
     name: "Rabbit",
     hp: 3,
+    damage: 4,
     imageUrl:
       "https://drive.google.com/file/d/1DoYMahDkMJl2KNBXKx1Qcb6pT3d-K7o8/view?usp=sharing",
     locationId: 1,
@@ -11,6 +12,7 @@ export const enemies = [
   {
     name: "Squirrel",
     hp: 3,
+    damage: 4,
     imageUrl:
       "https://drive.google.com/file/d/1twR7bHsgn3vVsMQ2Ls58SCteDvBAoS1b/view?usp=sharing",
     locationId: 1,
@@ -18,6 +20,7 @@ export const enemies = [
   {
     name: "Fox",
     hp: 3,
+    damage: 4,
     imageUrl:
       "https://drive.google.com/file/d/1rbtwUCty7JnWiY9fCQ_I4lMUFMtVx1qB/view?usp=sharing",
     locationId: 1,
@@ -25,6 +28,7 @@ export const enemies = [
   {
     name: "Armadillo",
     hp: 3,
+    damage: 4,
     imageUrl:
       "https://drive.google.com/file/d/1XKC0csyHcVTnY8iQdEQg_8w83MJsDmcQ/view?usp=sharing",
     locationId: 2,
@@ -32,6 +36,7 @@ export const enemies = [
   {
     name: "Snake",
     hp: 3,
+    damage: 4,
     imageUrl:
       "https://drive.google.com/file/d/1W37gswgJg6iBAU57x3qB_qe6q7aDFsv_/view?usp=sharing",
     locationId: 2,
@@ -39,6 +44,7 @@ export const enemies = [
   {
     name: "Hawk",
     hp: 3,
+    damage: 4,
     imageUrl:
       "https://drive.google.com/file/d/1aTKN7SvFrQUxspoWNy77FU9YCAZ2B_3W/view?usp=sharing",
     locationId: 2,
@@ -46,6 +52,7 @@ export const enemies = [
   {
     name: "Stray Animal",
     hp: 3,
+    damage: 4,
     imageUrl:
       "https://drive.google.com/file/d/1IhSEKmFPVmUNKEZvfjqZoQ93btmFJVXA/view?usp=sharing",
     locationId: 3,
@@ -53,6 +60,7 @@ export const enemies = [
   {
     name: "Rat",
     hp: 3,
+    damage: 4,
     imageUrl:
       "https://drive.google.com/file/d/1YVUPmpamGXifX-KAJPYIlrttmI9xQhv-/view?usp=sharing",
     locationId: 3,
@@ -60,6 +68,7 @@ export const enemies = [
   {
     name: "Aggressive Kid",
     hp: 3,
+    damage: 4,
     imageUrl:
       "https://drive.google.com/file/d/1BcUALURFcieyxTE9ryUTwDfNC9IltVfU/view?usp=sharing",
     locationId: 3,
@@ -78,16 +87,16 @@ function withEnemyImage(enemy) {
   };
 }
 
-export async function createEnemy(name, hp, imageUrl, locationId) {
+export async function createEnemy(name, hp, damage, imageUrl, locationId) {
   const sql = `
     INSERT INTO enemies
-        (name, hp, image_url, location_id)
+        (name, hp, damage, image_url, location_id)
     VALUES
-        ($1, $2, $3, $4)
+        ($1, $2, $3, $4, $5)
     `;
   const {
     rows: [enemy],
-  } = await db.query(sql, [name, hp, imageUrl, locationId]);
+  } = await db.query(sql, [name, hp, damage, imageUrl, locationId]);
   return enemy;
 }
 

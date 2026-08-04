@@ -4,6 +4,7 @@ export const bosses = [
   {
     name: "Rabid Squirrel",
     hp: 5,
+    damage: 6,
     imageUrl:
       "https://drive.google.com/file/d/1i50XN90J3GOXAxVFGSUbraGNfyULt-v1/view?usp=sharing",
     locationId: 1,
@@ -11,6 +12,7 @@ export const bosses = [
   {
     name: "Rival Stray",
     hp: 5,
+    damage: 6,
     imageUrl:
       "https://drive.google.com/file/d/1c3L72JsooSQBnybT-VXLnZmnhfu789wd/view?usp=sharing",
     locationId: 2,
@@ -18,6 +20,7 @@ export const bosses = [
   {
     name: "Animal Control",
     hp: 5,
+    damage: 6,
     imageUrl:
       "https://drive.google.com/file/d/13CPgMuR9QIn0xtBEtPYHNjRaKK29Okg-/view?usp=sharing",
     locationId: 3,
@@ -36,17 +39,17 @@ function withBossImage(boss) {
   };
 }
 
-export async function createBoss(name, hp, imageUrl, locationId) {
+export async function createBoss(name, hp, damage, imageUrl, locationId) {
   const sql = `
 INSERT INTO bosses
-    (name, hp, image_url, location_id)
+    (name, hp, damage, image_url, location_id)
 VALUES
-    ($1, $2, $3, $4)
+    ($1, $2, $3, $4, $5)
 RETURNING *
 `;
   const {
     rows: [boss],
-  } = await db.query(sql, [name, hp, imageUrl, locationId]);
+  } = await db.query(sql, [name, hp, damage, imageUrl, locationId]);
   return boss;
 }
 
