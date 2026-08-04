@@ -45,7 +45,7 @@ router.post("/:itemId/use", async (req, res) => {
     return res.status(404).send("That item is not in your inventory.");
   }
 
-  const healingMatch = /^Restores\s+(\d+)\s+heart/i.exec(item.effect);
+  const healingMatch = /^Restores\s+(\d+)\s+(?:hp|hearts?)/i.exec(item.effect);
 
   if (!item.can_use || !healingMatch) {
     return res.status(400).send("That item cannot restore health.");
