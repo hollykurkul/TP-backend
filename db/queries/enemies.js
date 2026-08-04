@@ -3,7 +3,7 @@ import db from "#db/client";
 export const enemies = [
   {
     name: "Rabbit",
-    hp: 3,
+    hp: 10,
     damage: 4,
     imageUrl:
       "https://drive.google.com/file/d/1DoYMahDkMJl2KNBXKx1Qcb6pT3d-K7o8/view?usp=sharing",
@@ -11,7 +11,7 @@ export const enemies = [
   },
   {
     name: "Squirrel",
-    hp: 3,
+    hp: 10,
     damage: 4,
     imageUrl:
       "https://drive.google.com/file/d/1twR7bHsgn3vVsMQ2Ls58SCteDvBAoS1b/view?usp=sharing",
@@ -19,7 +19,7 @@ export const enemies = [
   },
   {
     name: "Fox",
-    hp: 3,
+    hp: 10,
     damage: 4,
     imageUrl:
       "https://drive.google.com/file/d/1rbtwUCty7JnWiY9fCQ_I4lMUFMtVx1qB/view?usp=sharing",

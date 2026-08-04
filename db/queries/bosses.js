@@ -3,7 +3,7 @@ import db from "#db/client";
 export const bosses = [
   {
     name: "Rabid Squirrel",
-    hp: 5,
+    hp: 15,
     damage: 6,
     imageUrl:
       "https://drive.google.com/file/d/1i50XN90J3GOXAxVFGSUbraGNfyULt-v1/view?usp=sharing",
