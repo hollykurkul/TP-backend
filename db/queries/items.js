@@ -38,7 +38,7 @@ export const itemCatalog = [
   {
     name: "Berries",
     type: "Consumable",
-    effect: "Restores 1 heart",
+    effect: "Restores 5 hp",
     description: "A handful of juicy berries. Naturally sweet and filling.",
     imageUrl:
       "https://game-icons.net/icons/ffffff/000000/1x1/delapouite/berry-bush.png",
@@ -49,7 +49,7 @@ export const itemCatalog = [
   {
     name: "Fish",
     type: "Consumable",
-    effect: "Restores 2 hearts",
+    effect: "Restores 5 hp",
     description: "A fresh fish, still wriggling. It smells of the stream.",
     imageUrl:
       "https://game-icons.net/icons/ffffff/000000/1x1/delapouite/fish-bucket.png",
@@ -60,7 +60,7 @@ export const itemCatalog = [
   {
     name: "Apple",
     type: "Consumable",
-    effect: "Restores 1 heart",
+    effect: "Restores 5 hp",
     description: "A crisp, red apple. Sweet and satisfying.",
     imageUrl:
       "https://static.vecteezy.com/system/resources/thumbnails/067/874/485/small/fresh-red-apple-with-green-leaf-free-png.png",
@@ -103,7 +103,7 @@ export const itemCatalog = [
   {
     name: "Cactus Fruit",
     type: "Consumable",
-    effect: "Restores 1 heart",
+    effect: "Restores 5 hp",
     description:
       "A spiky fruit that yields a sweet, refreshing juice. its the quenchiest",
     imageUrl:
@@ -115,7 +115,7 @@ export const itemCatalog = [
   {
     name: "Water Bottle",
     type: "Consumable",
-    effect: "Restores 2 heart",
+    effect: "Restores 5 hp",
     description: "An abandoned bottle filled with clean water.",
     imageUrl:
       "https://game-icons.net/icons/ffffff/000000/1x1/delapouite/water-bottle.png",
@@ -126,7 +126,7 @@ export const itemCatalog = [
   {
     name: "Road Kill",
     type: "Consumable",
-    effect: "Restores 1 heart",
+    effect: "Restores 5 hp",
     description:
       "A small body of an animal that has been hit by a vehicle. still warm",
     imageUrl:
@@ -171,7 +171,7 @@ export const itemCatalog = [
   {
     name: "Fast Food Bag",
     type: "Consumable",
-    effect: "Restores 1 heart",
+    effect: "Restores 5 hp",
     description:
       "A bag of fast food. Not very nutritious, but filling and delicious.",
     imageUrl:
@@ -183,7 +183,7 @@ export const itemCatalog = [
   {
     name: "Lunch Box",
     type: "Consumable",
-    effect: "Restores 2 hearts",
+    effect: "Restores 5 hp",
     description:
       "A packed lunch box with a variety of food items. A hearty meal for the journey.",
     imageUrl:
@@ -195,7 +195,7 @@ export const itemCatalog = [
   {
     name: "Thrown Out Food",
     type: "Consumable",
-    effect: "Restores 1 heart",
+    effect: "Restores 5 hp",
     description:
       "A piece of food that has been discarded in the dump. Still edible, but not very appetizing.",
     imageUrl:
