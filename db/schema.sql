@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS player_progress;
 DROP TABLE IF EXISTS story_choices;
 DROP TABLE IF EXISTS story_nodes;
 DROP TABLE IF EXISTS user_inventory;
@@ -34,6 +35,7 @@ CREATE TABLE enemies (
   id serial PRIMARY KEY,
   name text NOT NULL,
   hp integer NOT NULL,
+  damage integer NOT NULL DEFAULT 4,
   image_url text NOT NULL,
   location_id integer NOT NULL REFERENCES locations(id) ON DELETE CASCADE
 );
@@ -42,6 +44,7 @@ CREATE TABLE bosses (
   id serial PRIMARY KEY,
   name text NOT NULL, 
   hp integer NOT NULL,
+  damage integer NOT NULL DEFAULT 6,
   image_url text NOT NULL,
   location_id integer NOT NULL REFERENCES locations(id) ON DELETE CASCADE  
 );
@@ -81,4 +84,12 @@ CREATE TABLE story_choices (
   choice_text text NOT NULL,
   next_node_id text REFERENCES story_nodes(id),
   sort_order integer NOT NULL DEFAULT 0
+);
+
+CREATE TABLE player_progress (
+  user_id integer NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  character_id integer NOT NULL REFERENCES characters(id) ON DELETE CASCADE,
+  current_hp integer NOT NULL DEFAULT 20,
+  max_hp integer NOT NULL DEFAULT 20,
+  PRIMARY KEY (user_id)
 );
